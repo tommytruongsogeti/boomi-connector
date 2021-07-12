@@ -1,0 +1,55 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'com.sogeti'
+version = '0.1-SNAPSHOT'
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+repositories {
+            maven {
+                name = "Connector SDK Repository"
+                url = "https://boomisdk.s3.amazonaws.com/releases"
+            }
+}
+
+configurations {
+    lib {
+        extendsFrom api
+    }
+}
+
+ext.sdkVersion = "2.9.5"
+
+dependencies {
+    implementation "com.boomi.connsdk:connector-sdk-api:$sdkVersion"
+    api ("com.boomi.connsdk:connector-sdk-util:$sdkVersion") {
+        transitive false 
+    }
+
+    testImplementation "com.boomi.connsdk:connector-sdk-test-util:$sdkVersion"
+
+    // Uncomment this dependency if needed
+    // implementation "com.boomi.util:boomi-util:2.9.5"
+  
+    // Uncomment this dependency if needed
+    // implementation "com.boomi.connsdk:connector-sdk-ws:$sdkVersion"
+}
+
+task connectorArchive(type: Zip) {
+    into "lib", {
+        from jar
+        from configurations.lib
+    } 
+    into "META-INF", {
+         from sourceSets.main.resources, {
+            include "connector-descriptor.xml"
+            include "connector-config.xml"
+         }
+    }
+    archiveClassifier = "car"
+}
+
+assemble.dependsOn connectorArchive

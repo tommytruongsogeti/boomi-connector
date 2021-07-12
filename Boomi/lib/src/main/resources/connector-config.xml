@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenericConnector sdkApiVersion="2.9.5">
+    <connectorClassName>com.boomi.azure.connector.AzureConnector</connectorClassName>
+</GenericConnector>
