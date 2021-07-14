@@ -8,6 +8,25 @@
     <field id="password" label="Password" type="password"/>
     <field id="oauth" label="OAuth" type="oauth"/>
 
+    <!-- Connection Properties -->
+    <field id="connectionURL" label="Connection URL" type="string"/>
+        <helpText>Azure DLS end point URL</helpText>
+    <field id="accountName" label="Account Name" type="string"/>
+        <helpText>Microsoft Azure Data Lake Storage Gen2 account name or the service name.</helpText>
+    <field id="clientID" label="Client ID" type="string"/>
+        <helpText>The ID of your application to complete the OAuth Authentication in the Azure Active Directory (AD).</helpText>
+    <field id="clientSecret" label="Client Secret" type="string"/>
+        <helpText>The client secret key to complete the OAuth Authentication in the Azure AD.</helpText>
+    <field id="tenantID" label="Tenant ID" type="string"/>
+        <helpText>The Directory ID of the Azure AD.</helpText>
+    <field id="fileSystemName" label="File System Name" type="string"/>
+        <helpText>The name of an existing file system in the Microsoft Azure Data Lake Storage Gen2 account.</helpText>
+    <field id="dirPath" label="Directory Path" type="string"/>
+        <helpText>The path of an existing directory under given file system.</helpText>
+    <field id="endpoint" label="ADLS Gen2 End-point" type="string"/>
+    <field id="responseTimeout" label="Response Timeout" type="integer"/>
+        <helpText>Enable operation response time to be configured by users, default to 30,000ms.</helpText>
+
     <operation types="GET"/>
     <operation types="CREATE"/>
     <operation types="EXECUTE" customTypeId="UPSERT"/>
