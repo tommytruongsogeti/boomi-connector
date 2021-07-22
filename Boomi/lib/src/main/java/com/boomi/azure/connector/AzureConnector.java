@@ -15,11 +15,11 @@ public class AzureConnector extends BaseConnector {
 
     @Override
     protected Operation createGetOperation(OperationContext context) {
-        return new AzureGetOperation(new AzureConnectorConnection (context));
+        return new AzureGetOperation(new AzureConnectorConnection<OperationContext> (context));
     }
 
     @Override
     protected Operation createExecuteOperation(OperationContext context) {
-        return new AzureExecuteOperation(new AzureConnectorConnection (context));
+        return new AzureExecuteOperation(new AzureConnectorConnection<OperationContext> (context));
     }
 }

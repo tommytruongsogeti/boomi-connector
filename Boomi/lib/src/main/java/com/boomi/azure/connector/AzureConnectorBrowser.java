@@ -26,9 +26,4 @@ public class AzureConnectorBrowser extends BaseBrowser {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-    public AzureConnectorConnection getConnection() {
-        return (AzureConnectorConnection) super.getConnection();
-    }
 }
