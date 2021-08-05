@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <GenericConnectorDescriptor>
-    
-    <field id="oauth" label="OAuth" type="oauth"/>
-
     <!-- Connection Properties -->
     <field id="connectionURL" label="Connection URL" type="string"/>
     <field id="accountName" label="Account Name" type="string"/>
@@ -12,6 +9,7 @@
     <field id="tenantID" label="Tenant ID" type="string"/>
     <field id="fileSystemName" label="File System Name" type="string"/>
     <field id="dirPath" label="Directory Path" type="string"/>
+    <field id="fileName" label="File Name" type= "string"/>
     <field id="endpoint" label="ADLS Gen2 End-point" type="string"/>
     <field id="responseTimeout" label="Response Timeout" type="integer"/>
 

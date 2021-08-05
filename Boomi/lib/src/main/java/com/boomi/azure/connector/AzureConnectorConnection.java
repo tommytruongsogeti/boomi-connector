@@ -14,6 +14,7 @@ public class AzureConnectorConnection<C extends ConnectorContext> extends BaseCo
     private static final String TENANT_ID_FIELD = "tenantID";
     private static final String FILE_SYSTEM_NAME_FIELD = "fileSystemName";
     private static final String DIRECTORY_PATH_FIELD = "dirPath";
+    private static final String FILE_NAME_FIELD = "fileName";
     private static final String ENDPOINT_FIELD = "endpoint";
     private static final String RESPONSE_TIMEOUT_FIELD = "responseTimeout";
     
@@ -48,6 +49,10 @@ public class AzureConnectorConnection<C extends ConnectorContext> extends BaseCo
 	public String getDirectoryPath() {
         return getContext().getConnectionProperties().getProperty(DIRECTORY_PATH_FIELD);
     }
+	
+	public String getFileName() {
+		return getContext().getConnectionProperties().getProperty(FILE_NAME_FIELD);
+	}
 
 	public String getEndpoint() {
         return getContext().getConnectionProperties().getProperty(ENDPOINT_FIELD);

@@ -5,6 +5,8 @@ import com.boomi.connector.api.Browser;
 import com.boomi.connector.api.Operation;
 import com.boomi.connector.api.OperationContext;
 import com.boomi.connector.util.BaseConnector;
+import com.boomi.azure.connector.AzureExecuteOperation;
+import com.boomi.azure.connector.AzureGetOperation;
 
 public class AzureConnector extends BaseConnector {
 

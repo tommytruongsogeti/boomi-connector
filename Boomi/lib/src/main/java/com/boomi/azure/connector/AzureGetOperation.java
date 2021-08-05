@@ -33,7 +33,8 @@ public class AzureGetOperation extends BaseGetOperation {
 	protected void executeGet(GetRequest getRequest, OperationResponse operationResponse) {
 		
 		String authToken = "";
-		ObjectIdData objectId = getRequest.getObjectId();
+		ObjectIdData requestData = getRequest.getObjectId();
+		String objectID = requestData.getObjectId();
 		
 		try {
 			OkHttpClient client = new OkHttpClient().newBuilder()
@@ -52,7 +53,7 @@ public class AzureGetOperation extends BaseGetOperation {
 	        authToken = token.getString("access_token");
 	        System.out.println(authToken);
 		} catch (Exception e) {
-			ResponseUtil.addExceptionFailure(operationResponse, null, e);
+			ResponseUtil.addExceptionFailure(operationResponse, requestData, e);
 		} finally {
         }
 		
@@ -61,21 +62,23 @@ public class AzureGetOperation extends BaseGetOperation {
                 .readTimeout(30000, TimeUnit.MILLISECONDS)
                 .build();
             Request request = new Request.Builder()
-                .url(getConnection().getConnectionURL() + "/" + getConnection().getFileSystemName() + "/" + getConnection().getDirectoryPath())
+                .url(getConnection().getConnectionURL() + "/" + getConnection().getFileSystemName() + "/" + getConnection().getDirectoryPath() + "/" + getConnection().getFileName())
                 .method("GET", null)
                 .addHeader("Authorization", "Bearer " + authToken)
                 .build();
             Response response = client.newCall(request).execute();
             
             int statusCode = response.code();
+            ResponseBody responseBody = response.body();
+            String content = responseBody.string();
 
-            if (response.body().string().length() > 0) {
-            	ResponseUtil.addResultWithHttpStatus(operationResponse, objectId, statusCode, authToken, PayloadUtil.toPayload(response.body().string()));
+            if (content.length() > 0) {
+            	ResponseUtil.addResultWithHttpStatus(operationResponse, requestData, statusCode, response.message(), PayloadUtil.toPayload(content));
             } else {
-            	ResponseUtil.addEmptySuccess(operationResponse, null, String.valueOf(statusCode));
+            	ResponseUtil.addEmptySuccess(operationResponse, requestData, String.valueOf(statusCode));
             }
         } catch (Exception e) {
-        	ResponseUtil.addExceptionFailure(operationResponse, objectId, e);
+        	ResponseUtil.addExceptionFailure(operationResponse, requestData, e);
         } finally {
         }
 	}
