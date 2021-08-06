@@ -5,7 +5,7 @@
     <field id="connectionURL" label="Connection URL" type="string"/>
     <field id="accountName" label="Account Name" type="string"/>
     <field id="clientID" label="Client ID" type="string"/>
-    <field id="clientSecret" label="Client Secret" type="string"/>
+    <field id="clientSecret" label="Client Secret" type="password"/>
     <field id="tenantID" label="Tenant ID" type="string"/>
     <field id="fileSystemName" label="File System Name" type="string"/>
     <field id="dirPath" label="Directory Path" type="string"/>
